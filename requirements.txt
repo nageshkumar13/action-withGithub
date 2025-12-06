@@ -1,0 +1,11 @@
+# Basic Python dependencies
+requests==2.31.0          # For making HTTP requests
+numpy==1.26.0             # For numerical operations
+pandas==2.1.0             # For data handling
+
+# Optional: Web framework example
+fastapi==0.110.0          # Lightweight API framework
+uvicorn==0.30.0           # ASGI server to run FastAPI
+
+# Testing
+pytest==8.0.0             # For running unit tests

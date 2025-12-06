@@ -42,8 +42,8 @@ jobs:
       # -----------------------------
       # OPTIONAL EXTRA EXAMPLES
       # -----------------------------
-      # - name: Install dependencies
-      #   run: pip install -r requirements.txt  # 👈 Only needed if you use dependencies
+      - name: Install dependencies
+        run: pip install -r requirements.txt  # 👈 Only needed if you use dependencies
 
       # - name: Run tests
       #   run: pytest                          # 👈 For running tests
