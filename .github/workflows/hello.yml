@@ -5,5 +5,10 @@ jobs:
     runs-on : ubuntu-latest
     steps :
       - name: Hello world step 
-        run : echo "Hello from Github Actions !"
+        run : |
+         echo "Hello from Github Actions !"
+         echo "next line of code"
+         pwd
+         ls -ltr
+
 
