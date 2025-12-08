@@ -1,0 +1,23 @@
+name: Actions
+
+on:
+    push:
+        branches:
+            - nagesh/test-actions
+
+jobs:
+    my_script:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            
+            - name: Hi there
+              run: |
+                echo "This is the script."
+                echo "Repository  : ${{github.repository}} ."
+                echo "Branch name : ${{github.ref_name}} ."
+                echo "Actor       : ${{github.actor}} ."
+                echo "Run Id      : ${{github.run_id}} ."  
+
