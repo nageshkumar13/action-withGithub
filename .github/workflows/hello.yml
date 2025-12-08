@@ -9,6 +9,6 @@ jobs:
          echo "Hello from Github Actions !"
          echo "next line of code"
          pwd
-         ls -la
+         
 
 
