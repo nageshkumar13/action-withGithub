@@ -8,6 +8,7 @@ jobs:
         run: |
           echo "Hello from Github Actions !"
           echo "next line of code"
+          ls -ltr
           pwd
           echo "Today's date is:"
           date
