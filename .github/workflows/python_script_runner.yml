@@ -1,28 +1,31 @@
-name: Run Python Script                      # 👈 You can change this name anytime
+name: Run Python Script # 👈 You can change this name anytime
 
 # -----------------------------
 # TRIGGERS
 # ----------------------------
 on:
-  push:                    # 👈 Workflow runs whenever you push code
-    branches: [ "develop" ]   # 👈 Change "main" to "develop" or any branch you want
+  push: # 👈 Workflow runs whenever you push code
+    branches:
+      ["develop", "actiongit"]
+      # 👈 Change "main" to "develop" or any branch you want
 
 # -----------------------------
 # JOBS SECTION (REQUIRED)
 # -----------------------------
 jobs:
   run-python:
-    runs-on: ubuntu-latest  # 👈 The machine where your script runs
-                            #     Options: ubuntu-latest, windows-latest, macos-latest
+    runs-on:
+      ubuntu-latest # 👈 The machine where your script runs
+      #     Options: ubuntu-latest, windows-latest, macos-latest
 
-    steps:                  # 👈 Each step runs in order
-
+    steps: # 👈 Each step runs in order
       # -----------------------------
       # STEP 1 — CHECKOUT CODE (REQUIRED)
       # -----------------------------
       - name: Checkout repo
-        uses: actions/checkout@v4  # 👈 MUST stay as-is
-                                   #     This downloads your repo into the runner
+        uses:
+          actions/checkout@v4 # 👈 MUST stay as-is
+          #     This downloads your repo into the runner
 
       # -----------------------------
       # STEP 2 — SETUP PYTHON (CUSTOMIZABLE)
@@ -30,21 +33,23 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"   # 👈 You can change: 3.8, 3.9, 3.11, 3.12, etc.
+          python-version: "3.10" # 👈 You can change: 3.8, 3.9, 3.11, 3.12, etc.
 
       # -----------------------------
       # OPTIONAL EXTRA EXAMPLES
       # -----------------------------
       - name: Install dependencies
-        run: pip install -r requirements.txt  # 👈 Only needed if you use dependencies
+        run:
+          pip install -r requirements.txt # 👈 Only needed if you use dependencies
+
 
           # -----------------------------
       # STEP 3 — RUN YOUR PYTHON SCRIPT
       # -----------------------------
       - name: Run Python Script
-        run: python hello.py       # 👈 Replace hello.py with ANY script you want
-                                   #     Example: python scripts/start.py
-
+        run:
+          python hello.py # 👈 Replace hello.py with ANY script you want
+          #     Example: python scripts/start.py
 
       # - name: Run tests
       #   run: pytest                          # 👈 For running tests
