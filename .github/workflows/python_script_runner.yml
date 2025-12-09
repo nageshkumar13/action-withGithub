@@ -5,13 +5,13 @@ name: Run Python Script                      # 👈 You can change this name any
 # ----------------------------
 on:
   push:                    # 👈 Workflow runs whenever you push code
-    branches: [ "develop" ]   # 👈 Change "main" to "develop" or any branch you want
+    branches: [ "deiva_actions" ]   # 👈 Change "main" to "develop" or any branch you want
 
 # -----------------------------
 # JOBS SECTION (REQUIRED)
 # -----------------------------
 jobs:
-  run-python:
+  python_code:
     runs-on: ubuntu-latest  # 👈 The machine where your script runs
                             #     Options: ubuntu-latest, windows-latest, macos-latest
 
