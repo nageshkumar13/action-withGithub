@@ -1,15 +1,26 @@
-name: first Workflow #name of the workflow
-on: 
-  push: 
-    branches: [ "ak_actions" ]  # 
+# name: first Workflow #name of the workflow
+# on: 
+#   push: 
+#     branches: [ "ak_actions" ]  # 
 
-jobs:                 # jobs is inbulit keyword no changes ever
-  first-job: #this we can change whatever we want
-    runs-on: ubuntu-latest #in which machine u want to run and run-on is built in
+# jobs:                 # jobs is inbulit keyword no changes ever
+#   first-job: #this we can change whatever we want
+#     runs-on: ubuntu-latest #in which machine u want to run and run-on is built in
     
-    steps: #what u want as output 
-      - name: print greeting
-        run: echo "hello i am ak"
+#     steps: #what u want as output 
+#       - name: print greeting
+#         run: echo "hello i am ak"
      
-      - name: print goodbye
-        run: echo "goodbye "
+#       - name: print goodbye
+#         run: echo "goodbye "
+
+name: Hello world
+on: 
+  workflow_dispatch:
+
+jobs: 
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello world"
+

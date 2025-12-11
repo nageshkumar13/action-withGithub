@@ -2,7 +2,6 @@ name: Run Python addition script
 
 on:
   workflow_dispatch:
-    branches: [ deiva_actions ]
 
 jobs:
   run-script:
@@ -19,3 +18,6 @@ jobs:
 
       - name: Run Python file
         run: python add.py
+
+      - name: check version
+        run: python --version
