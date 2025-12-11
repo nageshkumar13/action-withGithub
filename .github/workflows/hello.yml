@@ -1,9 +1,14 @@
 name: Hello world
-on : [push]
+on: [push]
 jobs:
   say_hello:
-    runs-on : ubuntu-latest
-    steps :
-      - name: Hello world step 
-        run : echo "Hello from Github Actions !"
-
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world step
+        run: |
+          echo "Hello from Github Actions !"
+          echo "next line of code"
+          ls -ltr
+          pwd
+          echo "Today's date is:"
+          date
