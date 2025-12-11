@@ -19,7 +19,7 @@ on:
   workflow_dispatch:
 
 jobs: 
-  say_hello:
+  said_hello:
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello world"
