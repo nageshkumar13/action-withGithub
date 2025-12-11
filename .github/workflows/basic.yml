@@ -19,3 +19,6 @@ jobs:
 
       - name: Run Python file
         run: python add.py
+
+      - name: check version
+        run: python --version
