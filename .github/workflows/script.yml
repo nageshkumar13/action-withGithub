@@ -14,7 +14,7 @@
 #       - name: print goodbye
 #         run: echo "goodbye "
 
-name: Hello world
+name: Hello London
 on: 
   workflow_dispatch:
 
