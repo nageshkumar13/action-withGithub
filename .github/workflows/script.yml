@@ -14,13 +14,33 @@
 #       - name: print goodbye
 #         run: echo "goodbye "
 
-name: Hello London
-on: 
+# name: Hello London
+# on: 
+#   workflow_dispatch:
+
+# jobs: 
+#   said_hello:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "hello world"
+
+name: Environment variables
+on:
   workflow_dispatch:
+env:
+  WORKFLOW_VAR: I_AM_WORKFLOW_SCOPED
 
-jobs: 
-  said_hello:
+jobs:
+  job-1:
     runs-on: ubuntu-latest
+    env:
+      JOB_VAR: I_AM_JOB_SCOPED
     steps:
-      - run: echo "hello world"
-
+      - name: inspect scopes job 1 step 1
+        env:
+          STEP_VAR: I_AM_STEP_SCOPED
+        run: |
+          echo "WORKFLOW_VAR: $WORKFLOW_VAR"
+          echo "JOB_VAR: $JOB_VAR"
+          echo "STEP_VAR: $STEP_VAR"
+          
