@@ -24,23 +24,58 @@
 #     steps:
 #       - run: echo "hello world"
 
-name: Environment variables
+# name: Environment variables
+# on:
+#   workflow_dispatch:
+# env:
+#   WORKFLOW_VAR: I_AM_WORKFLOW_SCOPED
+
+# jobs:
+#   job-1:
+#     runs-on: ubuntu-latest
+#     env:
+#       JOB_VAR: I_AM_JOB_SCOPED
+#     steps:
+#       - name: inspect scopes job 1 step 1
+#         env:
+#           STEP_VAR: I_AM_STEP_SCOPED
+#         run: |
+#           echo "WORKFLOW_VAR: $WORKFLOW_VAR"
+#           echo "JOB_VAR: $JOB_VAR"
+#           echo "STEP_VAR: $STEP_VAR"
+
+name: passing variables between jobs
 on:
   workflow_dispatch:
-env:
-  WORKFLOW_VAR: I_AM_WORKFLOW_SCOPED
 
-jobs:
-  job-1:
+jobs: 
+  producer:
     runs-on: ubuntu-latest
-    env:
-      JOB_VAR: I_AM_JOB_SCOPED
+
+    outputs:
+      foo: ${{steps.generate-foo.outputs.foo}}
     steps:
-      - name: inspect scopes job 1 step 1
-        env:
-          STEP_VAR: I_AM_STEP_SCOPED
+      - name: generate and export foo
+        id: generate-foo
         run: |
-          echo "WORKFLOW_VAR: $WORKFLOW_VAR"
-          echo "JOB_VAR: $JOB_VAR"
-          echo "STEP_VAR: $STEP_VAR"
-          
+          foo-bar 
+          # 1)step output(for job output)
+          echo "foo=${foo}" >> "$GUTHUB_OUTPUT"
+
+          # 2) job-scoped environment variable
+          echo "FOO=${foo}" >> "$GITHUB_ENV"
+      
+      - name: inspect values inside producer
+        run: |
+          echo "FOO (set via GITHUB_ENV):  $FOO"
+          echo "foo (step output):         ${{steps.generate-foo.outputs.foo}}"
+  
+  consumer:
+    runs-on: ubuntu-latest
+    needs: producer
+    steps:
+      - name: Inspect values inside consumer (note FOO is unset)
+        run: |
+          echo "values from producer: ${{needs.producer.outputs.foo}}"
+          echo "FOO in consumer":     ${FOO:-<UNSET>}
+
