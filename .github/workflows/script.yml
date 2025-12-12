@@ -53,14 +53,14 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      foo: ${{steps.generate-foo.outputs.foo}}
+      foo: ${{steps.generate-foo.outputs.foo }}
     steps:
       - name: generate and export foo
         id: generate-foo
         run: |
           foo=bar 
           # 1)step output(for job output)
-          echo "foo=${foo}" >> "$GUTHUB_OUTPUT"
+          echo "foo=${foo}" >> "$GITHUB_OUTPUT"
 
           # 2) job-scoped environment variable
           echo "FOO=${foo}" >> "$GITHUB_ENV"
@@ -68,7 +68,7 @@ jobs:
       - name: inspect values inside producer
         run: |
           echo "FOO (set via GITHUB_ENV):  $FOO"
-          echo "foo (step output):         ${{steps.generate-foo.outputs.foo}}"
+          echo "foo (step output):         ${{steps.generate-foo.outputs.foo }}"
   
   consumer:
     runs-on: ubuntu-latest
