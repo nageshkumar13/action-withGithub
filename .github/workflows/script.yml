@@ -58,7 +58,7 @@ jobs:
       - name: generate and export foo
         id: generate-foo
         run: |
-          foo-bar 
+          foo=bar 
           # 1)step output(for job output)
           echo "foo=${foo}" >> "$GUTHUB_OUTPUT"
 
