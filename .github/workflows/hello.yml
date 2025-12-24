@@ -1,10 +1,11 @@
 name: Hello world
-on: [push]
+on:
+  workflow_dispatch:
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello world step
+      - name: Hello step
         run: |
           echo "Hello from Github Actions !"
           echo "next line of code"
